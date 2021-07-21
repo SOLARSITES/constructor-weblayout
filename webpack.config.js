@@ -6,7 +6,7 @@ const isDev = mode === 'development';
 
 module.exports = {
   entry: {
-    main: './index.js',
+    main: './main.js',
   },
   output: {
     filename: 'index.js',
@@ -17,7 +17,7 @@ module.exports = {
     },
   },
   mode,
-  context: path.resolve(__dirname, 'src'),
+  context: path.resolve(__dirname, 'js'),
   module: {
     rules: [
       {
