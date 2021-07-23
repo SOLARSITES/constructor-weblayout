@@ -40,38 +40,46 @@ const getElement = (tagName, classNames, attributes) => {
   return element;
 };
 
-const createHeader = (param) => {
+const createHeader = ({ title, header: { logo, menu, social } }) => {
   const header = getElement('header');
   const container = getElement('div', ['container']);
   const wrapper = getElement('div', ['header']);
 
-  if (param.header.logo) {
-    const logo = getElement('img', ['logo'], {
-      src: param.header.logo,
-      alt: 'Логотип: ' + param.header.alt,
+  if (logo) {
+    const logoElem = getElement('img', ['logo'], {
+      src: logo,
+      alt: 'Логотип: ' + title,
     });
 
-    wrapper.append(logo);
+    wrapper.append(logoElem);
   }
 
-  if (param.header.menu) {
-    const navWrapper = getElement('nav', ['menu-list']);
-    const allNav = param.header.menu.map((item) => {
-      const navLink = getElement('a', ['menu-link']);
+  if (menu) {
+    const menuBtn = getElement('button', ['menu-button']);
+    const nav = getElement('nav', ['menu-list']);
+    const allMenuLink = menu.map((item) => {
+      const link = getElement('a', ['menu-link'], {
+        href: item.link,
+        textContent: item.title,
+      });
 
-      navLink.href = item.link;
-      navLink.textContent = item.title;
-
-      return navLink;
+      return link;
     });
 
-    navWrapper.append(...allNav);
-    wrapper.append(navWrapper);
+    nav.append(...allMenuLink);
+    wrapper.append(nav);
+
+    menuBtn.addEventListener('click', () => {
+      menuBtn.classList.toggle('menu-button-active');
+      wrapper.classList.toggle('header-active');
+    });
+
+    container.append(menuBtn);
   }
 
-  if (param.header.social) {
+  if (social) {
     const socialWrapper = getElement('div', ['social']);
-    const allSocial = param.header.social.map((item) => {
+    const allSocial = social.map((item) => {
       const socialLink = getElement('a', ['social-link']);
 
       socialLink.append(
@@ -96,22 +104,118 @@ const createHeader = (param) => {
   return header;
 };
 
+const createMain = ({ title, main: { genre, rating, description, trailer } }) => {
+  const main = getElement('main');
+  const container = getElement('div', ['container']);
+  const wrapper = getElement('div', ['main-content']);
+  const content = getElement('div', ['content']);
+
+  main.append(container);
+  container.append(wrapper);
+  wrapper.append(content);
+
+  if (genre) {
+    const genreSpan = getElement('span', ['genre', 'animated', 'fadeInRight'], {
+      textContent: genre,
+    });
+
+    content.append(genreSpan);
+  }
+
+  if (rating) {
+    const ratingBlock = getElement('div', ['rating', 'animated', 'fadeInRight']);
+    const ratingStars = getElement('div', ['rating-stars']);
+    const ratingNumber = getElement('div', ['rating-number'], { textContent: `${rating}/10` });
+
+    for (let i = 0; i < 10; i++) {
+      const star = getElement('img', ['star'], {
+        alt: i ? '' : `Рейтинг ${rating} из 10`,
+        src: i < rating ? './img/star.svg' : './img/star-o.svg',
+      });
+
+      ratingStars.append(star);
+    }
+
+    ratingBlock.append(ratingStars, ratingNumber);
+    content.append(ratingBlock);
+  }
+
+  content.append(
+    getElement('h1', ['main-title', 'animated', 'fadeInRight'], {
+      textContent: title,
+    }),
+  );
+
+  if (description) {
+    content.append(
+      getElement('p', ['main-description', 'animated', 'fadeInRight'], {
+        textContent: description,
+      }),
+    );
+  }
+
+  if (trailer) {
+    const youtubeLink = getElement('a', ['button', 'animated', 'fadeInRight', 'youtube-modal'], {
+      href: trailer,
+      textContent: 'Смотреть трейлер',
+    });
+
+    const youtubeImgLink = getElement('a', ['play', 'youtube-modal'], {
+      href: trailer,
+      ariaLabel: 'Смотреть трейлер',
+    });
+
+    const iconPlay = getElement('img', ['play-img'], {
+      src: './img/play.svg',
+      alt: '',
+      ariaHidden: true,
+    });
+
+    content.append(youtubeLink);
+    wrapper.append(youtubeImgLink);
+    youtubeImgLink.append(iconPlay);
+  }
+
+  return main;
+};
+
 const movieConstructor = (selector, options) => {
   const app = document.querySelector(selector);
 
   app.classList.add('body-app');
+
+  if (options.favicon) {
+    const index = options.favicon.lastIndexOf('.');
+    const type = options.favicon.substring(index + 1);
+
+    const favicon = getElement('link', null, {
+      rel: 'icon',
+      type: 'image/' + (type === 'ico' ? 'x-icon' : type),
+      href: options.favicon,
+    });
+
+    document.head.append(favicon);
+  }
+
+  app.style.backgroundImage = options.background ? `url("${options.background}")` : '';
+
   document.title = options.title;
 
   if (options.header) {
     app.append(createHeader(options));
   }
+
+  if (options.main) {
+    app.append(createMain(options));
+  }
 };
 
 movieConstructor('.app', {
-  title: 'Ведьмак – промо-сайт',
+  title: 'Ведьмак',
+  background: './witcher/background.jpg',
+  favicon: './favicon.ico',
   header: {
     logo: './witcher/logo.png',
-    alt: 'Ведьмак',
     social: [
       {
         title: 'Twitter',
@@ -143,5 +247,12 @@ movieConstructor('.app', {
         link: '#',
       },
     ],
+  },
+  main: {
+    genre: '2019, фэнтези',
+    rating: '8',
+    description:
+      'Ведьмак Геральт, мутант и убийца чудовищ, на своей верной лошади по кличке Плотва путешествует по Континенту. За тугой мешочек чеканных монет этот мужчина избавит вас от всякой настырной нечисти — хоть от чудищ болотных, оборотней и даже заколдованных принцесс.',
+    trailer: 'https://www.youtube.com/watch?v=P0oJqfLzZzQ',
   },
 });
