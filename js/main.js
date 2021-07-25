@@ -251,7 +251,7 @@ const createFooter = ({ footer: { copyright, menu } }) => {
   }
 
   if (menu) {
-    const footerMenu = getElement('nav', ['footer-menu"']);
+    const footerMenu = getElement('nav', ['footer-menu']);
     const allFooterLinks = menu.map((item) => {
       const footerLink = getElement('a', ['footer-link'], {
         href: item.link,
@@ -315,30 +315,121 @@ const movieConstructor = (selector, options) => {
   }
 };
 
+// Ведьмак
+// movieConstructor('.app', {
+//   title: 'Ведьмак',
+//   background: './witcher/background.jpg',
+//   favicon: './favicon.ico',
+//   fontColor: '#ffffff',
+//   backgroundColor: '#141218',
+//   subColor: '#9d2929',
+//   header: {
+//     logo: './witcher/logo.png',
+//     social: [
+//       {
+//         title: 'Twitter',
+//         link: 'https://twitter.com',
+//         image: './witcher/social/twitter.svg',
+//       },
+//       {
+//         title: 'Instagram',
+//         link: 'https://instagram.com',
+//         image: './witcher/social/instagram.svg',
+//       },
+//       {
+//         title: 'Facebook',
+//         link: 'https://facebook.com',
+//         image: './witcher/social/facebook.svg',
+//       },
+//     ],
+//     menu: [
+//       {
+//         title: 'Описание',
+//         link: '#',
+//       },
+//       {
+//         title: 'Трейлер',
+//         link: '#',
+//       },
+//       {
+//         title: 'Отзывы',
+//         link: '#',
+//       },
+//     ],
+//   },
+//   main: {
+//     genre: '2019, фэнтези',
+//     rating: '8',
+//     description:
+//       'Ведьмак Геральт, мутант и убийца чудовищ, на своей верной лошади по кличке Плотва путешествует по Континенту. За тугой мешочек чеканных монет этот мужчина избавит вас от всякой настырной нечисти — хоть от чудищ болотных, оборотней и даже заколдованных принцесс.',
+//     trailer: 'https://www.youtube.com/watch?v=P0oJqfLzZzQ',
+//     slider: [
+//       {
+//         img: './witcher/series/series-1.jpg',
+//         title: 'Начало конца',
+//         subtitle: 'Серия №1',
+//       },
+//       {
+//         img: './witcher/series/series-2.jpg',
+//         title: 'Четыре марки',
+//         subtitle: 'Серия №2',
+//       },
+//       {
+//         img: './witcher/series/series-3.jpg',
+//         title: 'Предательская луна',
+//         subtitle: 'Серия №3',
+//       },
+//       {
+//         img: './witcher/series/series-4.jpg',
+//         title: 'Банкеты, ублюдки и похороны',
+//         subtitle: 'Серия №4',
+//       },
+//     ],
+//   },
+//   footer: {
+//     copyright: '© 2020 The Witcher. All right reserved.',
+//     menu: [
+//       {
+//         title: 'Privacy Policy',
+//         link: '#',
+//       },
+//       {
+//         title: 'Terms of Service',
+//         link: '#',
+//       },
+//       {
+//         title: 'Legal',
+//         link: '#',
+//       },
+//     ],
+//   },
+// });
+
+// Чёрная Вдова
 movieConstructor('.app', {
-  title: 'Ведьмак',
-  background: './witcher/background.jpg',
-  favicon: './favicon.ico',
+  title: 'Чёрная Вдова',
+  background: './widow/background.jpg',
+  favicon: './widow/favicon.png',
   fontColor: '#ffffff',
   backgroundColor: '#141218',
   subColor: '#9d2929',
   header: {
-    logo: './witcher/logo.png',
+    logo: './widow/logo.png',
     social: [
       {
         title: 'Twitter',
         link: 'https://twitter.com',
-        image: './witcher/social/twitter.svg',
+        image: './widow/social/twitter.svg',
       },
       {
         title: 'Instagram',
         link: 'https://instagram.com',
-        image: './witcher/social/instagram.svg',
+        image: './widow/social/instagram.svg',
       },
       {
         title: 'Facebook',
         link: 'https://facebook.com',
-        image: './witcher/social/facebook.svg',
+        image: './widow/social/facebook.svg',
       },
     ],
     menu: [
@@ -357,43 +448,53 @@ movieConstructor('.app', {
     ],
   },
   main: {
-    genre: '2019, фэнтези',
-    rating: '8',
+    genre: '2021, фантастика, боевик, приключения',
+    rating: '7',
     description:
-      'Ведьмак Геральт, мутант и убийца чудовищ, на своей верной лошади по кличке Плотва путешествует по Континенту. За тугой мешочек чеканных монет этот мужчина избавит вас от всякой настырной нечисти — хоть от чудищ болотных, оборотней и даже заколдованных принцесс.',
-    trailer: 'https://www.youtube.com/watch?v=P0oJqfLzZzQ',
+      'Наташе Романофф предстоит лицом к лицу встретиться со своим прошлым. Чёрной Вдове придется вспомнить о том, что было в её жизни задолго до присоединения к команде Мстителей, и узнать об опасном заговоре, в который оказываются втянуты её старые знакомые — Елена, Алексей (известный как Красный Страж) и Мелина.',
+    trailer: 'https://www.youtube.com/watch?v=0k82-pGgryk',
     slider: [
       {
-        img: './witcher/series/series-1.jpg',
-        title: 'Начало конца',
-        subtitle: 'Серия №1',
+        img: './widow/slider/01.jpg',
+        title: '',
+        subtitle: '',
       },
       {
-        img: './witcher/series/series-2.jpg',
-        title: 'Четыре марки',
-        subtitle: 'Серия №2',
+        img: './widow/slider/02.jpg',
+        title: '',
+        subtitle: '',
       },
       {
-        img: './witcher/series/series-3.jpg',
-        title: 'Предательская луна',
-        subtitle: 'Серия №3',
+        img: './widow/slider/03.jpg',
+        title: '',
+        subtitle: '',
       },
       {
-        img: './witcher/series/series-4.jpg',
-        title: 'Банкеты, ублюдки и похороны',
-        subtitle: 'Серия №4',
+        img: './widow/slider/04.jpg',
+        title: '',
+        subtitle: '',
+      },
+      {
+        img: './widow/slider/05.jpg',
+        title: '',
+        subtitle: '',
+      },
+      {
+        img: './widow/slider/06.jpg',
+        title: '',
+        subtitle: '',
       },
     ],
   },
   footer: {
-    copyright: '© 2020 The Witcher. All right reserved.',
+    copyright: '© 2021 Black Widow. All right reserved.',
     menu: [
       {
-        title: 'Privacy Policy',
+        title: 'Privacy Policy',
         link: '#',
       },
       {
-        title: 'Terms of Service',
+        title: 'Terms of Service',
         link: '#',
       },
       {
@@ -403,3 +504,103 @@ movieConstructor('.app', {
     ],
   },
 });
+
+// Локи
+// movieConstructor('.app', {
+//   title: 'Локи',
+//   background: './loki/background.jpg',
+//   favicon: './loki/favicon.png',
+//   fontColor: '#ffffff',
+//   backgroundColor: '#000',
+//   subColor: '#014206',
+//   header: {
+//     logo: './loki/logo.png',
+//     social: [
+//       {
+//         title: 'Twitter',
+//         link: 'https://twitter.com',
+//         image: './loki/social/twitter.svg',
+//       },
+//       {
+//         title: 'Instagram',
+//         link: 'https://instagram.com',
+//         image: './loki/social/instagram.svg',
+//       },
+//       {
+//         title: 'Facebook',
+//         link: 'https://facebook.com',
+//         image: './loki/social/facebook.svg',
+//       },
+//     ],
+//     menu: [
+//       {
+//         title: 'Описание',
+//         link: '#',
+//       },
+//       {
+//         title: 'Трейлер',
+//         link: '#',
+//       },
+//       {
+//         title: 'Отзывы',
+//         link: '#',
+//       },
+//     ],
+//   },
+//   main: {
+//     genre: '2021, фантастика, фэнтези, боевик, приключения',
+//     rating: '8',
+//     description:
+//       'Локи попадает в таинственную организацию «Управление временными изменениями» после того, как он украл Тессеракт, и путешествует во времени, меняя историю.',
+//     trailer: 'https://youtu.be/YrjHcYqe31g',
+//     slider: [
+//       {
+//         img: 'loki/series/series-1.jpg',
+//         title: 'Славная миссия',
+//         subtitle: 'Серия №1',
+//       },
+//       {
+//         img: 'loki/series/series-2.jpg',
+//         title: 'Вариант',
+//         subtitle: 'Серия №2',
+//       },
+//       {
+//         img: 'loki/series/series-3.jpg',
+//         title: 'Ламентис',
+//         subtitle: 'Серия №3',
+//       },
+//       {
+//         img: 'loki/series/series-4.jpg',
+//         title: 'Смежное событие',
+//         subtitle: 'Серия №4',
+//       },
+//       {
+//         img: 'loki/series/series-5.jpg',
+//         title: 'Путешествие в неизвестность',
+//         subtitle: 'Серия №5',
+//       },
+//       {
+//         img: 'loki/series/series-6.jpg',
+//         title: 'На все времена. Всегда',
+//         subtitle: 'Серия №6',
+//       },
+//     ],
+//   },
+//   footer: {
+//     copyright: '© 2021 Loki. All right reserved.',
+//     menu: [
+//       {
+//         title: 'Privacy Policy',
+//         link: '#',
+//       },
+//       {
+//         title: 'Terms of Service',
+//         link: '#',
+//       },
+//       {
+//         title: 'Legal',
+//         link: '#',
+//       },
+//     ],
+//   },
+// });
